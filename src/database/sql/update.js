@@ -6,11 +6,13 @@ async function updateContact(id, context){
   try{
     await db.connect()
     const result = await db.query(query,[context[0], context[1],context[2],context[3], id])
-    await db.release()
-    return result.rowCount
+    await db.end()
+    if(result.rowCount > 0) return result.rows
+    else return undefined
   }catch(err){
-    await db.release()
-    return result.rowCount
+    console.error("error na connection"+err.stack);
+    await db.end()
+    return undefined
   }
 }
 

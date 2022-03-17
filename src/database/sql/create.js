@@ -5,11 +5,14 @@ async function createContact(context){
   try{
     await db.connect()
     const result = await db.query(query, [context[0],context[1],context[2],context[3]])
-    if(result.rowCount >= 0){
-      await db.end()
+    await db.end()
+    if(result.rowCount > 0)
       return result.rowCount
-    }
+    else 
+      throw new Error("erro na conection com pg")
+  
   }catch(err){
+    console.error("error na connection"+err.stack);
     await db.end()
     return undefined
   }

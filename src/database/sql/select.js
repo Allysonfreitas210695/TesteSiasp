@@ -6,8 +6,10 @@ async function getContacts(){
     await db.connect()
     const result = await db.query(query)
     await db.end()
-    return result.rows
+    if(result.rowCount > 0) return result.rows
+    else return undefined
   }catch(err){
+    console.error("error na connection"+err.stack);
     await db.end()
     return undefined
   }

@@ -8,6 +8,7 @@ async function dropTable(){
     await db.release()
     return result.rowCount;
   }catch(err){
+    console.error("error na connection"+err.stack);
     await db.release()
     return false;
   }

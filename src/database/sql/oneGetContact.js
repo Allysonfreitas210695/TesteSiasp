@@ -2,15 +2,17 @@ const db = require('../connection/database')
 
 async function getContact(id){
   const query = "select * from contact where id=$1"
+  await db.connect()
   try{
-    await db.connect()
     const result = await db.query(query, [id])
-    await db.release()
-    return result.rows
+    await db.end()
+    if(result.rowCount > 0) return result.rows
+    else return undefined
   }catch(err){
-    await db.release()
+    console.error("error na connection"+err.stack);
+    await db.end()
     return undefined
   }
 }
-
+ 
 module.exports = { getContact }

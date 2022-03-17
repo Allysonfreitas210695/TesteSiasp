@@ -5,9 +5,12 @@ async function deleteContact(id){
   try{
     await db.connect()
     const result = await db.query(query,[id])
-    return result.rowCount
+    await db.end();
+    if(result.rowCount > 0) return result.rows
+    else return undefined
   }catch(err){
-    await db.release()
+    console.error("error na connection"+err.stack);
+    await db.end()
     return undefined;
   }
 }
