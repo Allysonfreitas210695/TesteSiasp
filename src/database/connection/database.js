@@ -8,4 +8,6 @@ const cliente = new Client({
   host: "127.0.0.1"
 })
 
+
+
 module.exports = cliente

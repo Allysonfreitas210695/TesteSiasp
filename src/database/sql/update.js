@@ -5,21 +5,14 @@ async function updateContact(id, context){
 
   try{
     await db.connect()
-    await db.query(query,[context[0], context[1],context[2],context[3], id])
-    return true
+    const result = await db.query(query,[context[0], context[1],context[2],context[3], id])
+    await db.release()
+    return result.rowCount
   }catch(err){
-    console.error(err.stack)
-    return false
-  }finally{
-    await db.end()
+    await db.release()
+    return result.rowCount
   }
 }
 
-
-// if(updateContact(4, ["allyson bruno ff","84 998138643", "fernnades", "allyson@gmail.com"])){
-//   console.log("Atualizado com sucesso!");
-// }else{
-//   console.log("Error ao Atualizar Contact");
-// }
 
 module.exports = { updateContact }

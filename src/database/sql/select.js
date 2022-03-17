@@ -5,13 +5,11 @@ async function getContacts(){
   try{
     await db.connect()
     const result = await db.query(query)
-    console.log(result.rows);
-    return true
-  }catch(err){
-    console.log(err.stack);
-    return false
-  }finally{
     await db.end()
+    return result.rows
+  }catch(err){
+    await db.end()
+    return undefined
   }
 }
 

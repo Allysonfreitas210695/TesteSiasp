@@ -4,14 +4,12 @@ async function dropTable(){
   const query = 'DROP TABLE contact CASCADE'
   try{
     await db.connect()
-    await db.query(query)
-    console.log("tabela removida com sucesso");
-    return true;
+    const result = await db.query(query)
+    await db.release()
+    return result.rowCount;
   }catch(err){
-    console.error(err.stack);
+    await db.release()
     return false;
-  }finally{
-    await db.end()
   }
   
 }

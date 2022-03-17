@@ -1,21 +1,19 @@
 const db = require('../connection/database')
 
-async function createContact(conxt){
+async function createContact(context){
   const query = "insert into contact(nome,celular,sobrenome,email) values($1, $2, $3 , $4)"
   try{
     await db.connect()
-  await db.query(query, [conxt[0],conxt[1],conxt[2],conxt[3]])
+    const result = await db.query(query, [context[0],context[1],context[2],context[3]])
+    if(result.rowCount >= 0){
+      await db.end()
+      return result.rowCount
+    }
   }catch(err){
-    console.error(err.stack);
-  }finally{
-     await db.end()
+    await db.end()
+    return undefined
   }
 }
 
-// if(createContact(["jose ","84 988138643", "teste 88123", "88teste@123.com"])){
-//   console.log("Criado com Sucesso!");
-// }else{
-//   console.log("Erro ao criar contact!");
-// }
 
 module.exports = { createContact }
