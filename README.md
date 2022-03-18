@@ -54,7 +54,7 @@
 > Gosto de ajuda as pessoas tanto na faculdade, como no meu dia a dia
 > Sou uma Pessoa Extrovetida, Proativa e Engajada...
 
-!["Foto Node.js"](https://www.google.com/url?sa=i&url=https%3A%2F%2Fubunlog.com%2Fpt%2Finstala%25C3%25A7%25C3%25A3o-do-nodejs-npm-ubuntu-20-04-18-04%2F&psig=AOvVaw17MdrSJxEjFpOwHnaIkU2F&ust=1647646812815000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIihqO2ozvYCFQAAAAAdAAAAABAD)
+!["Foto Allyson"](https://avatars.githubusercontent.com/u/62726222?v=4)
 
 # Links de Repositorios 
 ["Repositorios AllysonFreitas210695"](https://github.com/Allysonfreitas210695)
